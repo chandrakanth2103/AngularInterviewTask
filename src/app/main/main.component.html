@@ -1,0 +1,41 @@
+<div>
+    <mat-form-field class="example-form-field">
+        <mat-label>Search Shows..</mat-label>
+        <input matInput type="text" [(ngModel)]="search" name="search">
+        <button *ngIf="search" matSuffix mat-icon-button aria-label="search" (click)="SearchShowByName(search)">
+            <mat-icon>search</mat-icon>
+        </button>
+        <button *ngIf="search" matSuffix mat-icon-button aria-label="Clear" (click)="ClearContent()">
+          <mat-icon>close</mat-icon>
+        </button>
+    </mat-form-field>
+    <div *ngIf="isSearch==false">
+        <div *ngFor="let Show of showList | keyvalue" >
+            <div>
+                <p class="card-title">{{Show.key}}</p>
+                <div class="row card-data">
+                    <mat-card *ngFor="let show of singleShow(Show.key)" class="show_card" (click)="ScreenPageRoute(show.id)" style="min-height:325px" >
+                        <img md-card-image src="{{show.image.medium}}" class="mat-card-image" />
+                        <mat-card-header><mat-card-title class="card-name">{{show.name}}</mat-card-title></mat-card-header>
+                        <span><label class="label-style">{{show?.rating?.average}}</label><mat-icon aria-hidden="false" aria-label="star" class="gold-icon">star</mat-icon></span>
+                    </mat-card>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div *ngIf="isSearch==true">
+        <div *ngFor="let k of ShowSearch" class="row card-data">
+            <mat-card (click)="ScreenPageRoute(k.id)">
+                <mat-card-header><mat-card-title>{{k.name}}</mat-card-title></mat-card-header>
+                <img md-card-image src="{{k.image.medium}}" class="mat-card-image" />
+            </mat-card>
+        </div>
+        <div *ngIf="ShowSearch.length==0" style="color: white;">
+            <div>
+                <div>
+                    <h1 class="noshow-style">No Movies or TV Shows Found</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

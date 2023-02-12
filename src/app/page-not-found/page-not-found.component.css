@@ -1,0 +1,19 @@
+.pageNotFound-style{
+    text-align: center;
+    padding-bottom: 60px;
+    color: aliceblue;
+    margin-top: 80px;
+}
+.pageNotFound-button-style{
+    border: none;
+    background: none;
+    color: white;
+    position: absolute;
+    margin-top: 10px;
+}
+.pageNotFoud-back-button-style{
+    font-size: 50px;
+    height: 50px;
+    width: 50px;
+    cursor: pointer;
+}
